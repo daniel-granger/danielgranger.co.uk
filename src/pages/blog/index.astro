@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import '../../assets/css/global.css';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Blog - Daniel Granger</title>
+  </head>
+  <body>
+    <h1>Blog</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/portfolio">Portfolio</a>
+    </nav>
+    <ul>
+      {posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          <p>{post.data.date.toLocaleDateString()}</p>
+          <p>{post.data.description}</p>
+        </li>
+      ))}
+    </ul>
+  </body>
+</html>
