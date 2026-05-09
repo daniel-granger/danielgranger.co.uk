@@ -35,7 +35,7 @@ And here is a [hyperlink](google.com)
 
 And here is some ya ml:
 
-```yaml
+```apex
 local_backend: true
 
 backend:
