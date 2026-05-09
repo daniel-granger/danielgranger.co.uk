@@ -12,14 +12,13 @@ pre,
     font-family: 'Google Sans Code', monospace;
 }
 
-h1 {
-    font-weight: 700;
-    font-size: 3rem;
+.display-3 {
     font-family: 'Google Sans', sans-serif;
+    font-weight: 700;
 }
 
 @media screen and (max-width: 992px) {
     .slot-container {
-        margin: 0 1rem;
+        padding: 0 2rem;
     }
 }

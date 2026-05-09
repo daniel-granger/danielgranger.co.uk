@@ -1,20 +1,21 @@
 ---
 import '../../assets/css/hero.css';
+import { marked } from 'marked';
+import homepage from '../../data/homepage.json';
+
+const subtitleHtml = marked.parseInline(homepage.subtitle);
 ---
 
 <section class="hero">
 	<div class="row">
 		<div class="col-12 title">
-			<h1><b>Daniel Granger</b></h1>
-			<p class="render-code hero-tag"><b>.NET</b> Web Developer</p>
+			<h1 id="hero-title" class="display-3"><b>{homepage.title}</b></h1>
+			<p class="render-code hero-tag" set:html={subtitleHtml}></p>
 
 			<div class="dev-icon-container mt-3">
-				<i class="devicon-csharp-plain"></i>
-				<i class="devicon-svelte-plain"></i>
-				<i class="devicon-microsoftsqlserver-plain"></i>
-				<i class="devicon-kubernetes-plain"></i>
-				<i class="devicon-azure-plain"></i>
-				<i class="devicon-netlify-plain"></i>
+				{homepage.icons.map((icon) => (
+					<i class={`devicon-${icon}-plain`}></i>
+				))}
 			</div>
 		</div>
 	</div>

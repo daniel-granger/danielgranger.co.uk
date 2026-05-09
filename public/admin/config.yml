@@ -8,6 +8,20 @@ media_folder: public/images
 public_folder: /images
 
 collections:
+  - name: pages
+    label: Pages
+    files:
+      - name: homepage
+        label: Homepage
+        file: src/data/homepage.json
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Subtitle, name: subtitle, widget: richtext }
+          - label: Tech Icons
+            name: icons
+            widget: list
+            field: { label: Tech Name, name: icon, widget: string, hint: "e.g. csharp, azure, kubernetes" }
+
   - name: blog
     label: Blog
     folder: src/content/blog
