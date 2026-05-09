@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
-import '../../assets/css/global.css';
+import Layout from '../../components/Layout.astro';
 
 export async function getStaticPaths() {
   const items = await getCollection('portfolio');
@@ -18,25 +18,10 @@ const { item } = Astro.props as Props;
 const { Content } = await render(item);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{item.data.title} - Daniel Granger</title>
-  </head>
-  <body>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
-      <a href="/portfolio">Portfolio</a>
-    </nav>
-    <article>
-      <h1>{item.data.title}</h1>
-      {item.data.tags && <p>Tags: {item.data.tags.join(', ')}</p>}
-      <Content />
-    </article>
-  </body>
-</html>
+<Layout title={`${item.data.title} - Daniel Granger`}>
+  <article>
+    <h1>{item.data.title}</h1>
+    {item.data.tags && <p>Tags: {item.data.tags.join(', ')}</p>}
+    <Content />
+  </article>
+</Layout>

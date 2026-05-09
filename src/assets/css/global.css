@@ -17,3 +17,9 @@ h1 {
     font-size: 3rem;
     font-family: 'Google Sans', sans-serif;
 }
+
+@media screen and (max-width: 992px) {
+    .slot-container {
+        margin: 0 1rem;
+    }
+}

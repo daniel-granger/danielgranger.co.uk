@@ -1,0 +1,36 @@
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: content
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: blog
+    label: Blog
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
+      - { label: Description, name: description, widget: string }
+      - { label: Body, name: body, widget: richtext }
+
+  - name: portfolio
+    label: Portfolio
+    folder: src/content/portfolio
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: string }
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+      - { label: Body, name: body, widget: richtext }

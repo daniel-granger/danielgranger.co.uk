@@ -1,33 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
-import '../../assets/css/global.css';
+import Layout from '../../components/Layout.astro';
 
 const items = await getCollection('portfolio');
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Portfolio - Daniel Granger</title>
-  </head>
-  <body>
-    <h1>Portfolio</h1>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
-    </nav>
-    <ul>
-      {items.map((item) => (
-        <li>
-          <a href={`/portfolio/${item.id}`}>{item.data.title}</a>
-          <p>{item.data.description}</p>
-          {item.data.tags && <p>Tags: {item.data.tags.join(', ')}</p>}
-        </li>
-      ))}
-    </ul>
-  </body>
-</html>
+<Layout title="Portfolio - Daniel Granger">
+  <h1>Portfolio</h1>
+  <ul>
+    {items.map((item) => (
+      <li>
+        <a href={`/portfolio/${item.id}`}>{item.data.title}</a>
+        <p>{item.data.description}</p>
+        {item.data.tags && <p>Tags: {item.data.tags.join(', ')}</p>}
+      </li>
+    ))}
+  </ul>
+</Layout>

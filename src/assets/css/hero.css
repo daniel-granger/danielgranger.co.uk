@@ -1,5 +1,5 @@
 .hero {
-    margin-top: 4rem;
+    margin-top: 3rem;
 }
 
 .title {
@@ -8,8 +8,14 @@
     transition: all 0.2s ease-in-out;
 }
 
+.dev-icon-container > i {
+    font-size: 2rem;
+    padding: 0.25rem;
+    transition: color 0.2s ease-in-out;
+}
+
 .title:focus, .title:hover {
-    border-left-color: #ffb366;
+    border-left-color: #ff9e4e;
 }
 
 .hero-tag {
