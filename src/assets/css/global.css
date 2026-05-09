@@ -1,1 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Code:wght@400;500;700&family=Google+Sans+Mono:wght@400;500;700&display=swap');
 @import 'bootstrap/dist/css/bootstrap.css';
+
+body {
+    font-family: 'Google Sans Mono', sans-serif;
+    background-color: #f5f5f5;
+}
+
+code,
+pre,
+.render-code {
+    font-family: 'Google Sans Code', monospace;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    font-family: 'Google Sans', sans-serif;
+}

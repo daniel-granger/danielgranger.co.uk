@@ -1,0 +1,23 @@
+.hero {
+    margin-top: 4rem;
+}
+
+.title {
+    border-left: #ff7502 0.25rem solid;
+    padding: 0.75rem 2rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.title:focus, .title:hover {
+    border-left-color: #ffb366;
+}
+
+.hero-tag {
+    margin: 0;
+    margin-top: -0.5rem;
+    font-size: 1.25rem;
+}
+
+.dotnet {
+    font-weight: 500;
+}
