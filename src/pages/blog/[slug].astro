@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from 'astro:content';
+import '../../assets/css/global.css';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: any;
+}
+
+const { post } = Astro.props as Props;
+const { Content } = await render(post);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{post.data.title} - Daniel Granger</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/blog">Blog</a>
+      <a href="/portfolio">Portfolio</a>
+    </nav>
+    <article>
+      <h1>{post.data.title}</h1>
+      <p>{post.data.date.toLocaleDateString()}</p>
+      <Content />
+    </article>
+  </body>
+</html>

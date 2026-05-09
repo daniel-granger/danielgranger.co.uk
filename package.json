@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "daniel-granger-website",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.3.1"
+    "astro": "^6.3.1",
+    "bootstrap": "^5.3.8"
   }
 }
