@@ -1,0 +1,12 @@
+{
+  "title": "Daniel Granger",
+  "subtitle": "**.NET** Web Developer",
+  "icons": [
+    "csharp",
+    "svelte",
+    "microsoftsqlserver",
+    "kubernetes",
+    "azure",
+    "netlify"
+  ]
+}

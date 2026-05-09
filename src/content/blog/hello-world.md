@@ -3,24 +3,49 @@ title: Hello World
 date: 2026-05-01
 description: My first blog post exploring the basics of building this site.
 ---
-This is my first blog post. I'm excited to share my thoughts and projects with you.
+## Here is a heading 2
 
-In this post, I'll be discussing the fundamentals of getting started with personal blogging and why I decided to build this site from scratc
+### Here is a heading 3
 
+#### Here is a heading 4
 
+##### Here is a heading 5
 
-```csharp
-using DeveloperAssessment.Web.Repositories;
-using DeveloperAssessment.Web.Services;
+This is some normal text.
 
-var builder = WebApplication.CreateBuilder(args);
+**This is some bold text.**
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+*This is some italic text.*
 
-builder.Services.AddHttpClient();
-builder.Services.AddMemoryCache();
+This is some ~~strikethrough~~ text!
 
-builder.Services.AddScoped<IBlogRepository, BlogRepository>();
-builder.Services.AddScoped<IBlogService, BlogService>();
+This is some `code text, I could do something easily like ref a variable with this.`
+
+And here is a [hyperlink](google.com)
+
+> Here is a cool quote that someone once said.
+
+* Here
+* are
+* some
+* bullets
+
+1. And
+2. Some
+
+And here is some ya ml:
+
+```yaml
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: content
+
+media_folder: public/images
+public_folder: /images
 ```
+
+And here:
+
+![Alt TExt!](/images/256x256.png "TITLE")
