@@ -9,6 +9,9 @@
     "azure",
     "netlify"
   ],
-  "about": "I'm a .NET web developer based in the UK, passionate about building clean, scalable web applications. I specialise in .NET, Azure, Netlify and modern front-end technologies.",
-  "featured_work": ["project-one", "project-two"]
+  "about": "I'm a .NET web developer based in the UK, passionate about building clean, scalable web applications.\n\nIf I find anything interesting, or build something worth showing, you'll find it here. Otherwise, I might just be moaning about something.",
+  "featured_work": [
+    "project-one",
+    "project-two"
+  ]
 }
