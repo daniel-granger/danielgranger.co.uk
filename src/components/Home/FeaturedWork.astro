@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  slugs: string[];
+}
+
+const { slugs } = Astro.props;
+
+const allItems = await getCollection('portfolio');
+const featured = slugs
+  .map((slug) => allItems.find((item) => item.id === slug))
+  .filter(Boolean);
+---
+
+<section class="featured-work container-lg mt-5">
+  <h2 class="mb-4">Featured Work</h2>
+  <div class="row">
+    {featured.map((item) => (
+      <div class="col-md-4">
+        <div class="work-card">
+          <h3><a href={`/portfolio/${item!.id}`}>{item!.data.title}</a></h3>
+          <p>{item!.data.description}</p>
+          {item!.data.tags && (
+            <div class="tags">
+              {item!.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -14,6 +14,7 @@
   "dependencies": {
     "astro": "^6.3.1",
     "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
     "marked": "^18.0.3"
   }
 }

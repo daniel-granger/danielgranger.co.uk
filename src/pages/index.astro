@@ -1,8 +1,17 @@
 ---
 import Layout from '../components/Layout.astro';
 import Hero from '../components/Home/Hero.astro';
+import About from '../components/Home/About.astro';
+import LatestPosts from '../components/Home/LatestPosts.astro';
+import FeaturedWork from '../components/Home/FeaturedWork.astro';
+import homepage from '../data/homepage.json';
 ---
 
 <Layout title="Daniel Granger | .NET Web Developer">
   <Hero />
+  <article>
+	<About about={homepage.about} />
+	<LatestPosts />
+	<FeaturedWork slugs={homepage.featured_work} />
+  </article>
 </Layout>

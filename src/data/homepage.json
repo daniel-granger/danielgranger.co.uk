@@ -8,5 +8,7 @@
     "kubernetes",
     "azure",
     "netlify"
-  ]
+  ],
+  "about": "I'm a .NET web developer based in the UK, passionate about building clean, scalable web applications. I specialise in .NET, Azure, Netlify and modern front-end technologies.",
+  "featured_work": ["project-one", "project-two"]
 }

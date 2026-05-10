@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<section class="latest-posts container-lg mt-5">
+  <h2 class="mb-4">Latest Posts</h2>
+  <div class="row">
+    {posts.map((post) => (
+      <div class="col-md-4">
+        <div class="post-card">
+          <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
+          <p class="date"><i class="bi bi-calendar me-2"></i>{post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+          <p>{post.data.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

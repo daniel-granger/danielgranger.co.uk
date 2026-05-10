@@ -2,7 +2,7 @@ local_backend: true
 
 backend:
   name: git-gateway
-  branch: content
+  branch: main
 
 media_folder: public/images
 public_folder: /images
@@ -17,6 +17,11 @@ collections:
         fields:
           - { label: Title, name: title, widget: string }
           - { label: Subtitle, name: subtitle, widget: richtext }
+          - { label: About, name: about, widget: markdown }
+          - label: Featured Work
+            name: featured_work
+            widget: list
+            field: { label: Portfolio Slug, name: slug, widget: string, hint: "e.g. project-one" }
           - label: Tech Icons
             name: icons
             widget: list

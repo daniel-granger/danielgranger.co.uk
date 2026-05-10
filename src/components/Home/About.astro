@@ -1,0 +1,15 @@
+---
+import { marked } from 'marked';
+
+interface Props {
+  about: string;
+}
+
+const { about } = Astro.props;
+const aboutHtml = await marked.parse(about);
+---
+
+<section class="about container-lg mt-5">
+  <h2 class="mb-4">About Me</h2>
+  <div set:html={aboutHtml} />
+</section>
