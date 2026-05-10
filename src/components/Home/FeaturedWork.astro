@@ -19,7 +19,7 @@ const featured = slugs
     {featured.map((item) => (
       <div class="col-md-4">
         <div class="work-card">
-          <h3><a href={`/portfolio/${item!.id}`}>{item!.data.title}</a></h3>
+          <h4><a href={`/portfolio/${item!.id}`}>{item!.data.title}</a></h4>
           <p>{item!.data.description}</p>
           {item!.data.tags && (
             <div class="tags">

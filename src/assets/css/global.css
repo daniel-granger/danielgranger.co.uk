@@ -24,7 +24,38 @@ pre,
     }
 }
 
-/* Rich Text Content Styling */
+/* Navbar */
+
+.navbar-toggler {
+    border: none;
+    box-shadow: none;
+    padding: 0.25rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 22px;
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    background-color: #222;
+    border-radius: 2px;
+    transition: opacity 0.2s ease;
+}
+
+.navbar-toggler:hover .hamburger span {
+    background-color: #555;
+}
+
+
 
 article {
     margin-top: 3rem;
