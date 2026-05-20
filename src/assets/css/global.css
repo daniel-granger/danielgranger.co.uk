@@ -103,7 +103,6 @@ article > blockquote:hover {
 article a {
     color: #006CAC;
     text-decoration: none;
-    font-weight: bold;
 }
 
 article a:hover {
