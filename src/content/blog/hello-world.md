@@ -39,7 +39,7 @@ And here is some ya ml:
 local_backend: true
 
 backend:
-  name: git-gateway
+  name: git-gateway-but-this-is-a-long-long-long-line!
   branch: content
 
 media_folder: public/images

@@ -13,6 +13,13 @@ pre,
     font-family: 'Google Sans Code', monospace;
 }
 
+article p code {
+    color: #ab296a;
+    background-color: #ddd;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+}
+
 .display-3 {
     font-family: 'Google Sans', sans-serif;
     font-weight: 700;
@@ -22,6 +29,10 @@ pre,
     .slot-container {
         padding: 0 2rem;
     }
+}
+
+.slot-container, nav .container-lg {
+    max-width: 1000px;
 }
 
 /* Navbar */
@@ -34,6 +45,14 @@ pre,
 
 .navbar-toggler:focus {
     box-shadow: none;
+}
+
+.navbar-brand {
+    transition: color 0.2s ease-in-out;
+}
+
+.navbar-brand:hover, .navbar-brand:focus-within {
+    color: #4E29CD;
 }
 
 .hamburger {
@@ -54,8 +73,6 @@ pre,
 .navbar-toggler:hover .hamburger span {
     background-color: #555;
 }
-
-
 
 article {
     margin-top: 3rem;
@@ -81,6 +98,7 @@ article > blockquote:hover {
 article a {
     color: #006CAC;
     text-decoration: none;
+    font-weight: bold;
 }
 
 article a:hover {
@@ -103,6 +121,19 @@ article > pre code .line::before {
     width: 1.5rem;
     margin-right: 1rem;
     text-align: right;
-    color: #888;
+    color: #ddd;
     user-select: none;
+}
+
+article > time {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+article img {
+    display: block;
+    margin: 2rem auto;
+    max-width: min(100%, 720px);
+    height: auto;
+    border-radius: 0.25rem;
 }

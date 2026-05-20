@@ -20,7 +20,7 @@ const { Content } = await render(post);
 <Layout title={`${post.data.title} - Daniel Granger`}>
   <article>
     <h1>{post.data.title}</h1>
-    <p>{post.data.date.toLocaleDateString()}</p>
+    <time datetime={post.data.date.toISOString().split('T')[0]}>{post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }).replace(/(\w+) (\d+)$/, '$1, $2')}</time>
     <Content />
   </article>
 </Layout>

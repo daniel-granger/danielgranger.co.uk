@@ -17,7 +17,7 @@ const featured = slugs
   <h2 class="mb-4">Featured Work</h2>
   <div class="row">
     {featured.map((item) => (
-      <div class="col-md-4">
+      <div class="col-md-6 col-lg-4">
         <div class="work-card">
           <h4><a href={`/portfolio/${item!.id}`}>{item!.data.title}</a></h4>
           <p>{item!.data.description}</p>

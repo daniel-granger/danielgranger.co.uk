@@ -10,7 +10,7 @@ const posts = (await getCollection('blog'))
   <h2 class="mb-4">Latest Posts</h2>
   <div class="row">
     {posts.map((post) => (
-      <div class="col-md-4">
+      <div class="col-md-6 col-lg-4">
         <div class="post-card">
           <h4><a href={`/blog/${post.id}`}>{post.data.title}</a></h4>
           <p class="date"><i class="bi bi-calendar me-2"></i>{post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
