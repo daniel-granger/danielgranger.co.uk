@@ -5,7 +5,7 @@ import Layout from '../../components/Layout.astro';
 const items = await getCollection('portfolio');
 ---
 
-<Layout title="Portfolio - Daniel Granger">
+<Layout title="Portfolio - Daniel Granger" description="A selection of projects and work by Daniel Granger, .NET web developer.">
   <div class="page-header mt-5">
     <h1>Portfolio</h1>
     <p class="page-subtitle">{items.length} project{items.length !== 1 ? 's' : ''}</p>

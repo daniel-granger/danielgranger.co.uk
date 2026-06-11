@@ -4,7 +4,7 @@ import Layout from '../../components/Layout.astro';
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<Layout title="Blog - Daniel Granger">
+<Layout title="Blog - Daniel Granger" description="Articles and thoughts on .NET, web development, and software engineering by Daniel Granger.">
   <div class="page-header mt-5">
     <h1>Blog</h1>
     <p class="page-subtitle">{posts.length} post{posts.length !== 1 ? 's' : ''}</p>
@@ -18,6 +18,11 @@ const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf()
             <h4>{post.data.title}</h4>
             <p class="date"><i class="bi bi-calendar me-2"></i>{post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             <p>{post.data.description}</p>
+            {post.data.tags && (
+              <div class="tags">
+                {post.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
+              </div>
+            )}
           </a>
         </div>
       ))}

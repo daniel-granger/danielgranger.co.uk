@@ -15,6 +15,11 @@ const posts = (await getCollection('blog'))
           <h4>{post.data.title}</h4>
           <p class="date"><i class="bi bi-calendar me-2"></i>{post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
           <p>{post.data.description}</p>
+          {post.data.tags && (
+            <div class="tags">
+              {post.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
+            </div>
+          )}
         </a>
       </div>
     ))}

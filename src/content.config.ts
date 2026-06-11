@@ -7,6 +7,7 @@ const blog = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     description: z.string(),
+    tags: z.array(z.string()).max(3).optional(),
   }),
 });
 
@@ -15,7 +16,7 @@ const portfolio = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.string()).max(3).optional(),
   }),
 });
 
