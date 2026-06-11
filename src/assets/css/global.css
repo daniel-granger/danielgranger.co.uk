@@ -131,7 +131,7 @@ article > pre code .line::before {
 
 article > time {
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 article img {
