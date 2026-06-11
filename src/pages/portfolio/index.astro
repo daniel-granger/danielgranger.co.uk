@@ -6,14 +6,26 @@ const items = await getCollection('portfolio');
 ---
 
 <Layout title="Portfolio - Daniel Granger">
-  <h1>Portfolio</h1>
-  <ul>
-    {items.map((item) => (
-      <li>
-        <a href={`/portfolio/${item.id}`}>{item.data.title}</a>
-        <p>{item.data.description}</p>
-        {item.data.tags && <p>Tags: {item.data.tags.join(', ')}</p>}
-      </li>
-    ))}
-  </ul>
+  <div class="page-header mt-5">
+    <h1>Portfolio</h1>
+    <p class="page-subtitle">{items.length} project{items.length !== 1 ? 's' : ''}</p>
+  </div>
+
+  <section class="work-list mt-4">
+    <div class="row g-4">
+      {items.map((item) => (
+        <div class="col-md-6 col-lg-4">
+          <div class="work-card h-100">
+            <h4><a href={`/portfolio/${item.id}`}>{item.data.title}</a></h4>
+            <p>{item.data.description}</p>
+            {item.data.tags && (
+              <div class="tags">
+                {item.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
+              </div>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
 </Layout>
