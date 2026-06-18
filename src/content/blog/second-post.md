@@ -2,6 +2,9 @@
 title: Building with Astro
 date: 2026-05-05
 description: A deep dive into building static sites with Astro and why it's great for portfolios.
+categories:
+  - astro
+  - static-sites
 ---
 
 Astro is a fantastic framework for building fast, minimal websites. In this post, I explore why I chose Astro for this project and what makes it unique.

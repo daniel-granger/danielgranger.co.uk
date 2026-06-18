@@ -244,6 +244,36 @@ article img {
     color: #fff;
 }
 
+/* ── Portfolio filters ─────────────────────────────────────── */
+
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filter-chip {
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    background-color: #fff;
+    color: #444;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    transition: border-color 0.15s ease-in-out, color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.filter-chip:hover {
+    border-color: #6CD899;
+    color: #111;
+}
+
+.filter-chip.is-active {
+    border-color: #6CD899;
+    background-color: #6CD899;
+    color: #fff;
+}
+
 /* Footer */
 
 .site-footer {

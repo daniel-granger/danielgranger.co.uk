@@ -51,11 +51,11 @@ collections:
       - { label: Title, name: title, widget: string }
       - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
       - { label: Description, name: description, widget: string }
-      - label: Tags
-        name: tags
+      - label: Categories
+        name: categories
         widget: list
         required: false
-        hint: "Maximum 3 tags"
+        hint: "Maximum 3 categories"
       - { label: Body, name: body, widget: richtext }
 
   - name: portfolio

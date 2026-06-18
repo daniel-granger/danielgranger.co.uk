@@ -1,0 +1,63 @@
+---
+interface Props {
+  filters: string[];
+  ariaLabel: string;
+  itemSelector: string;
+}
+
+const { filters, ariaLabel, itemSelector } = Astro.props;
+const filterId = `taxonomy-filter-${itemSelector.replace(/[^a-z0-9]/gi, '').toLowerCase()}`;
+---
+
+{
+  filters.length > 0 && (
+    <nav id={filterId} class="filter-bar mt-3" aria-label={ariaLabel}>
+      <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All</button>
+      {filters.map((filter) => (
+        <button type="button" class="filter-chip" data-filter={filter} aria-pressed="false">{filter}</button>
+      ))}
+    </nav>
+  )
+}
+
+<script define:vars={{ itemSelector, filterId }}>
+  const initTaxonomyFilter = () => {
+    const nav = document.getElementById(filterId);
+
+    if (!(nav instanceof HTMLElement)) {
+      return;
+    }
+
+    const chips = Array.from(nav.querySelectorAll('.filter-chip'));
+    const items = Array.from(document.querySelectorAll(itemSelector));
+
+    const setActiveChip = (filter) => {
+      chips.forEach((chip) => {
+        const isActive = chip.dataset.filter === filter;
+        chip.classList.toggle('is-active', isActive);
+        chip.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+    };
+
+    const applyFilter = (filter) => {
+      items.forEach((item) => {
+        const values = (item.dataset.filterValues || '').split(',').map((value) => value.trim()).filter(Boolean);
+        item.hidden = filter !== 'all' && !values.includes(filter);
+      });
+
+      setActiveChip(filter);
+    };
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        applyFilter(chip.dataset.filter || 'all');
+      });
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTaxonomyFilter, { once: true });
+  } else {
+    initTaxonomyFilter();
+  }
+</script>

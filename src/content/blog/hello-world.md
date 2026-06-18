@@ -2,6 +2,9 @@
 title: Hello World
 date: 2026-05-01
 description: My first blog post exploring the basics of building this site.
+categories:
+  - site
+  - intro
 ---
 ## Here is a heading 2
 

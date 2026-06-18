@@ -1,8 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../components/Layout.astro';
+import TaxonomyFilter from '../../components/TaxonomyFilter.astro';
 
 const items = await getCollection('portfolio');
+const filterTags = [...new Set(items.flatMap((item) => item.data.tags ?? []))].sort((a, b) => a.localeCompare(b));
 ---
 
 <Layout title="Portfolio - Daniel Granger" description="A selection of projects and work by Daniel Granger, .NET web developer.">
@@ -11,10 +13,12 @@ const items = await getCollection('portfolio');
     <p class="page-subtitle">{items.length} project{items.length !== 1 ? 's' : ''}</p>
   </div>
 
+  <TaxonomyFilter filters={filterTags} ariaLabel="Filter portfolio by tag" itemSelector=".portfolio-item" />
+
   <section class="work-list mt-4">
     <div class="row g-4">
       {items.map((item) => (
-        <div class="col-12">
+        <div class="col-12 portfolio-item" data-filter-values={(item.data.tags ?? []).join(',')}>
           <a href={`/portfolio/${item.id}`} class="work-card">
             <h4>{item.data.title}</h4>
             <p>{item.data.description}</p>
