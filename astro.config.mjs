@@ -33,6 +33,9 @@ function rehypeCodeBlockA11y() {
 
 // https://astro.build/config
 export default defineConfig({
+  build: {
+    inlineStylesheets: 'always',
+  },
   redirects: {
     '/admin': '/admin/index.html',
   },

@@ -197,7 +197,9 @@ article img {
     border-bottom: none;
 }
 
+.post-card h3,
 .post-card h4,
+.work-card h3,
 .work-card h4 {
     font-family: 'Google Sans', sans-serif;
     font-size: 1.05rem;
@@ -206,7 +208,9 @@ article img {
     transition: color 0.15s ease-in-out;
 }
 
+.post-card:hover h3,
 .post-card:hover h4,
+.work-card:hover h3,
 .work-card:hover h4 {
     color: #6CD899;
 }
