@@ -1,5 +1,6 @@
 ---
 import footer from '../data/footer.json';
+import Icon from './Icon.astro';
 
 const year = new Date().getFullYear();
 const isExternal = (url: string) => /^https?:\/\//.test(url);
@@ -26,7 +27,8 @@ const copyrightSuffix = footer.copyright_suffix?.trim();
               rel={isExternal(link.url) ? 'noopener noreferrer' : undefined}
               aria-label={link.label}
             >
-              {link.icon && <i class={`bi ${link.icon}`}></i>}
+              {link.icon === 'bi-github' && <Icon name="github" class="social-icon" />}
+              {link.icon === 'bi-linkedin' && <Icon name="linkedin" class="social-icon" />}
               <span>{link.label}</span>
             </a>
           </li>

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../components/Layout.astro';
 import TaxonomyFilter from '../../components/TaxonomyFilter.astro';
+import Icon from '../../components/Icon.astro';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const getPostCategories = (post: (typeof posts)[number]) => post.data.categories ?? post.data.tags ?? [];
@@ -25,7 +26,7 @@ const filterCategories = [...new Set(posts.flatMap((post) => getPostCategories(p
         <div class="col-12 blog-item" data-filter-values={categories.join(',')}>
           <a href={`/blog/${post.id}`} class="post-card">
             <h4>{post.data.title}</h4>
-            <p class="date"><i class="bi bi-calendar me-2"></i>{post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            <p class="date"><Icon name="calendar" class="inline-icon me-2" />{post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             <p>{post.data.description}</p>
             {categories.length > 0 && (
               <div class="tags">

@@ -18,10 +18,14 @@ const { title, description } = Astro.props;
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Code:wght@400;500;700&family=Google+Sans+Mono:wght@400;500;700&display=swap"
+    />
     {description && <meta name="description" content={description} />}
     <title>{title}</title>
-    <!-- Devicon: only load where needed via per-page import -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
   </head>
   <body>
     <Header />
@@ -29,18 +33,5 @@ const { title, description } = Astro.props;
       <slot />
     </div>
     <Footer />
-    <script>import('bootstrap/dist/js/bootstrap.bundle.js');</script>
-    <script>
-      const w = window as any;
-      if (w.netlifyIdentity) {
-        w.netlifyIdentity.on("init", (user: any) => {
-          if (!user) {
-            w.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
   </body>
 </html>

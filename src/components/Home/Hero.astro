@@ -6,7 +6,8 @@ import homepage from '../../data/homepage.json';
 const subtitleHtml = marked.parseInline(homepage.subtitle);
 ---
 
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" /></noscript>
 
 <section class="hero">
 	<div class="row">
@@ -16,7 +17,7 @@ const subtitleHtml = marked.parseInline(homepage.subtitle);
 
 			<div class="dev-icon-container mt-3">
 				{homepage.icons.map((icon) => (
-					<i class={`devicon-${icon}-plain`}></i>
+					<i class={`devicon-${icon}-plain`} aria-hidden="true"></i>
 				))}
 			</div>
 		</div>
@@ -24,7 +25,7 @@ const subtitleHtml = marked.parseInline(homepage.subtitle);
 </section>
 
 <script>
-	document.querySelectorAll('.dev-icon-container > i').forEach(icon => {
+	document.querySelectorAll('.dev-icon-container > i').forEach((icon) => {
 		icon.addEventListener('mouseenter', () => icon.classList.add('colored'));
 		icon.addEventListener('mouseleave', () => icon.classList.remove('colored'));
 	});

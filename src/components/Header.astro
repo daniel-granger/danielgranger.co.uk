@@ -5,7 +5,7 @@ const { pathname } = Astro.url;
 <nav class="navbar navbar-expand-md">
 	<div class="container-lg">
 		<a class="navbar-brand" href="/">Daniel Granger</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="hamburger">
 				<span></span>
 				<span></span>
@@ -25,3 +25,14 @@ const { pathname } = Astro.url;
 	</div>
 </nav>
 
+<script>
+	const toggler = document.querySelector('.navbar-toggler');
+	const nav = document.querySelector('#navbarNav');
+	if (toggler && nav) {
+		toggler.addEventListener('click', () => {
+			const isExpanded = toggler.getAttribute('aria-expanded') === 'true';
+			toggler.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+			nav.classList.toggle('show', !isExpanded);
+		});
+	}
+</script>
