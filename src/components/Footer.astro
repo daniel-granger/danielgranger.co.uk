@@ -1,0 +1,37 @@
+---
+import footer from '../data/footer.json';
+
+const year = new Date().getFullYear();
+const isExternal = (url: string) => /^https?:\/\//.test(url);
+const socialLinks = footer.social_links ?? [];
+const copyrightSuffix = footer.copyright_suffix?.trim();
+---
+
+<footer class="site-footer">
+  <div class="container-lg footer-container">
+    <div class="footer-copy">
+      <p class="footer-meta">
+        © {year} {footer.owner_name}{copyrightSuffix ? `. ${copyrightSuffix}` : ''}
+      </p>
+      {footer.tagline && <p class="footer-tagline">{footer.tagline}</p>}
+    </div>
+
+    <div class="footer-links-group">
+      <ul class="footer-social" aria-label="Social links">
+        {socialLinks.map((link) => (
+          <li>
+            <a
+              href={link.url}
+              target={isExternal(link.url) ? '_blank' : undefined}
+              rel={isExternal(link.url) ? 'noopener noreferrer' : undefined}
+              aria-label={link.label}
+            >
+              {link.icon && <i class={`bi ${link.icon}`}></i>}
+              <span>{link.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</footer>

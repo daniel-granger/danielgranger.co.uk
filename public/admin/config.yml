@@ -26,6 +26,20 @@ collections:
             name: icons
             widget: list
             field: { label: Tech Name, name: icon, widget: string, hint: "e.g. csharp, azure, kubernetes" }
+      - name: footer
+        label: Footer
+        file: src/data/footer.json
+        fields:
+          - { label: Owner Name, name: owner_name, widget: string }
+          - { label: Copyright Suffix, name: copyright_suffix, widget: string, required: false }
+          - { label: Tagline, name: tagline, widget: string, required: false }
+          - label: Social Links
+            name: social_links
+            widget: list
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: url, widget: string, hint: "e.g. https://github.com/username" }
+              - { label: Icon Class, name: icon, widget: string, required: false, hint: "Bootstrap Icon class, e.g. bi-github" }
 
   - name: blog
     label: Blog
