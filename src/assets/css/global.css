@@ -172,6 +172,12 @@ article img {
     font-size: 0.95rem;
 }
 
+.empty-state {
+    margin: 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
 /* ── Cards ────────────────────────────────────────────────── */
 
 .post-card,

@@ -21,7 +21,7 @@ const needsDeviconStyles = homepage.icons.some((icon) => !deviconSvgMap[icon as 
 	<div class="row">
 		<div class="col-12 title">
 			<h1 id="hero-title" class="display-3"><b>{homepage.title}</b></h1>
-			<p class="render-code hero-tag" set:html={subtitleHtml}></p>
+			<div class="render-code hero-tag" set:html={subtitleHtml}></div>
 
 			<div class="dev-icon-container mt-3">
 				{homepage.icons.map((icon) => {

@@ -64,6 +64,14 @@ collections:
                 widget: text
                 hint: "Paste raw SVG markup. Leave blank to keep using the CDN devicon class."
                 required: false
+      - name: empty_states
+        label: Empty States
+        file: src/data/empty-states.json
+        fields:
+          - { label: Homepage Latest Posts Empty Message, name: home_latest_posts_empty, widget: string }
+          - { label: Homepage Featured Work Empty Message, name: home_featured_work_empty, widget: string }
+          - { label: Blog Index Empty Message, name: blog_index_empty, widget: string }
+          - { label: Portfolio Index Empty Message, name: portfolio_index_empty, widget: string }
 
   - name: blog
     label: Blog

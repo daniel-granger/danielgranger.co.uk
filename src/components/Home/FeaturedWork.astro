@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import emptyStates from '../../data/empty-states.json';
 
 interface Props {
   slugs: string[];
@@ -15,19 +16,23 @@ const featured = slugs
 
 <section class="featured-work container-lg mt-5">
   <h2 class="mb-4">Featured Work</h2>
-  <div class="row g-4">
-    {featured.map((item) => (
-      <div class="col-md-6 col-lg-4">
-        <a href={`/portfolio/${item!.id}`} class="work-card">
-          <h3 class="h4">{item!.data.title}</h3>
-          <p>{item!.data.description}</p>
-          {item!.data.tags && (
-            <div class="tags">
-              {item!.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
-            </div>
-          )}
-        </a>
-      </div>
-    ))}
-  </div>
+  {featured.length > 0 ? (
+    <div class="row g-4">
+      {featured.map((item) => (
+        <div class="col-md-6 col-lg-4">
+          <a href={`/portfolio/${item!.id}`} class="work-card">
+            <h3 class="h4">{item!.data.title}</h3>
+            <p>{item!.data.description}</p>
+            {item!.data.tags && (
+              <div class="tags">
+                {item!.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
+              </div>
+            )}
+          </a>
+        </div>
+      ))}
+    </div>
+  ) : (
+    <p class="empty-state">{emptyStates.home_featured_work_empty}</p>
+  )}
 </section>

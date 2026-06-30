@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Layout from '../../components/Layout.astro';
 import TaxonomyFilter from '../../components/TaxonomyFilter.astro';
 import Icon from '../../components/Icon.astro';
+import emptyStates from '../../data/empty-states.json';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const getPostCategories = (post: (typeof posts)[number]) => post.data.categories ?? post.data.tags ?? [];
@@ -15,27 +16,33 @@ const filterCategories = [...new Set(posts.flatMap((post) => getPostCategories(p
     <p class="page-subtitle">{posts.length} post{posts.length !== 1 ? 's' : ''}</p>
   </div>
 
-  <TaxonomyFilter filters={filterCategories} ariaLabel="Filter posts by category" itemSelector=".blog-item" />
+  {posts.length > 0 && (
+    <TaxonomyFilter filters={filterCategories} ariaLabel="Filter posts by category" itemSelector=".blog-item" />
+  )}
 
   <section class="post-list mt-4">
-    <div class="row g-4">
-      {posts.map((post) => {
-        const categories = getPostCategories(post);
+    {posts.length > 0 ? (
+      <div class="row g-4">
+        {posts.map((post) => {
+          const categories = getPostCategories(post);
 
-        return (
-        <div class="col-12 blog-item" data-filter-values={categories.join(',')}>
-          <a href={`/blog/${post.id}`} class="post-card">
-            <h4>{post.data.title}</h4>
-            <p class="date"><Icon name="calendar" class="inline-icon me-2" />{post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
-            <p>{post.data.description}</p>
-            {categories.length > 0 && (
-              <div class="tags">
-                {categories.map((category: string) => <span class="tag">{category}</span>)}
-              </div>
-            )}
-          </a>
-        </div>
-      )})}
-    </div>
+          return (
+          <div class="col-12 blog-item" data-filter-values={categories.join(',')}>
+            <a href={`/blog/${post.id}`} class="post-card">
+              <h4>{post.data.title}</h4>
+              <p class="date"><Icon name="calendar" class="inline-icon me-2" />{post.data.date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+              <p>{post.data.description}</p>
+              {categories.length > 0 && (
+                <div class="tags">
+                  {categories.map((category: string) => <span class="tag">{category}</span>)}
+                </div>
+              )}
+            </a>
+          </div>
+        )})}
+      </div>
+    ) : (
+      <p class="empty-state">{emptyStates.blog_index_empty}</p>
+    )}
   </section>
 </Layout>
