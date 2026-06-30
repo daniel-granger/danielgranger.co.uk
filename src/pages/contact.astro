@@ -1,0 +1,54 @@
+---
+import Layout from '../components/Layout.astro';
+import contact from '../data/contact.json';
+---
+
+<Layout title={`${contact.title} - Daniel Granger`} description={contact.meta_description}>
+  <div class="page-header mt-5">
+    <h1>{contact.title}</h1>
+    <p class="page-subtitle">{contact.subtitle}</p>
+  </div>
+
+  <section class="contact-section mt-4">
+    <p class="contact-intro">{contact.intro}</p>
+
+    <form
+      class="contact-form"
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/contact/thanks/"
+    >
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="visually-hidden">
+        <label>
+          {contact.honeypot_label}
+          <input name="bot-field" />
+        </label>
+      </p>
+
+      <div class="mb-3">
+        <label for="contact-name" class="form-label">{contact.name_label}</label>
+        <input id="contact-name" name="name" class="form-control" type="text" maxlength="100" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="contact-email" class="form-label">{contact.email_label}</label>
+        <input id="contact-email" name="email" class="form-control" type="email" maxlength="254" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="contact-subject" class="form-label">{contact.subject_label}</label>
+        <input id="contact-subject" name="subject" class="form-control" type="text" maxlength="150" />
+      </div>
+
+      <div class="mb-3">
+        <label for="contact-message" class="form-label">{contact.message_label}</label>
+        <textarea id="contact-message" name="message" class="form-control" rows={7} minlength="10" maxlength="5000" required></textarea>
+      </div>
+
+      <button class="btn btn-dark" type="submit">{contact.submit_label}</button>
+    </form>
+  </section>
+</Layout>

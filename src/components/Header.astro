@@ -20,6 +20,9 @@ const { pathname } = Astro.url;
 				<li class="nav-item">
 					<a class={`nav-link ${pathname.startsWith('/portfolio') ? 'active' : ''}`} href="/portfolio">Portfolio</a>
 				</li>
+				<li class="nav-item">
+					<a class={`nav-link ${pathname.startsWith('/contact') ? 'active' : ''}`} href="/contact">Contact</a>
+				</li>
 			</ul>
 		</div>
 	</div>

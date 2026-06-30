@@ -72,6 +72,23 @@ collections:
           - { label: Homepage Featured Work Empty Message, name: home_featured_work_empty, widget: string }
           - { label: Blog Index Empty Message, name: blog_index_empty, widget: string }
           - { label: Portfolio Index Empty Message, name: portfolio_index_empty, widget: string }
+      - name: contact
+        label: Contact
+        file: src/data/contact.json
+        fields:
+          - { label: Page Title, name: title, widget: string }
+          - { label: Page Subtitle, name: subtitle, widget: string }
+          - { label: Intro Copy, name: intro, widget: text }
+          - { label: Meta Description, name: meta_description, widget: text }
+          - { label: Name Field Label, name: name_label, widget: string }
+          - { label: Email Field Label, name: email_label, widget: string }
+          - { label: Subject Field Label, name: subject_label, widget: string }
+          - { label: Message Field Label, name: message_label, widget: string }
+          - { label: Honeypot Label, name: honeypot_label, widget: string }
+          - { label: Submit Button Label, name: submit_label, widget: string }
+          - { label: Thanks Page Title, name: thanks_title, widget: string }
+          - { label: Thanks Page Message, name: thanks_message, widget: text }
+          - { label: Thanks Page Link Label, name: thanks_link_label, widget: string }
 
   - name: blog
     label: Blog

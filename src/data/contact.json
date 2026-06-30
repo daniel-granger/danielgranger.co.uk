@@ -1,0 +1,15 @@
+{
+  "title": "Contact",
+  "subtitle": "Got a question or project in mind?",
+  "intro": "Use the form below and I will get back to you as soon as I can.",
+  "meta_description": "Get in touch with Daniel Granger via the contact form.",
+  "name_label": "Name",
+  "email_label": "Email",
+  "subject_label": "Subject (optional)",
+  "message_label": "Message",
+  "honeypot_label": "Don't fill this out if you're human:",
+  "submit_label": "Send message",
+  "thanks_title": "Thanks for your message",
+  "thanks_message": "Your message has been sent successfully. I will reply as soon as possible.",
+  "thanks_link_label": "Send another message"
+}

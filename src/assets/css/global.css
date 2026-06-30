@@ -178,6 +178,36 @@ article img {
     font-size: 0.95rem;
 }
 
+.contact-section {
+    max-width: 760px;
+}
+
+.contact-intro {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.contact-form {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    padding: 1rem;
+}
+
+.contact-form .form-label {
+    color: #333;
+    margin-bottom: 0.35rem;
+}
+
+.contact-form .form-control {
+    border-radius: 0.25rem;
+}
+
+.contact-form .form-control:focus {
+    border-color: #6CD899;
+    box-shadow: 0 0 0 0.25rem rgb(108 216 153 / 20%);
+}
+
 /* ── Cards ────────────────────────────────────────────────── */
 
 .post-card,
