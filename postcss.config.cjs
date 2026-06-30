@@ -16,7 +16,10 @@ module.exports = {
           // '.line' is injected by the syntax highlighter into code blocks
           'line',
           'blockquote',
-          'pre','code', 'astro-code', 'github-dark'
+          'pre','code', 'astro-code', 'github-dark',
+          // h5/h6 appear in markdown as ##### syntax, not as literal tag names,
+          // so PurgeCSS strips their Bootstrap styles without this safelist entry
+          /^h5/, /^h6/, /^\.h5/, /^\.h6/
         ],
       },
     }),
