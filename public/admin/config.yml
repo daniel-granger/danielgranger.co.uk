@@ -18,10 +18,6 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Subtitle, name: subtitle, widget: richtext }
           - { label: About, name: about, widget: markdown }
-          - label: Featured Work
-            name: featured_work
-            widget: list
-            field: { label: Portfolio Slug, name: slug, widget: string, hint: "e.g. project-one" }
           - label: Tech Icons
             name: icons
             widget: list
@@ -115,7 +111,9 @@ collections:
     extension: md
     fields:
       - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
       - { label: Description, name: description, widget: string }
+      - { label: Is Featured, name: is_featured, widget: boolean, required: false, default: false }
       - label: Tags
         name: tags
         widget: list

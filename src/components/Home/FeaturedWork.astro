@@ -2,16 +2,13 @@
 import { getCollection } from 'astro:content';
 import emptyStates from '../../data/empty-states.json';
 
-interface Props {
-  slugs: string[];
-}
-
-const { slugs } = Astro.props;
-
-const allItems = await getCollection('portfolio');
-const featured = slugs
-  .map((slug) => allItems.find((item) => item.id === slug))
-  .filter(Boolean);
+const featured = (await getCollection('portfolio'))
+  .filter((item) => item.data.is_featured)
+  .sort((a, b) => {
+    const aDate = a.data.date ? a.data.date.valueOf() : 0;
+    const bDate = b.data.date ? b.data.date.valueOf() : 0;
+    return bDate - aDate;
+  });
 ---
 
 <section class="featured-work container-lg mt-5">
@@ -20,12 +17,12 @@ const featured = slugs
     <div class="row g-4">
       {featured.map((item) => (
         <div class="col-md-6 col-lg-4">
-          <a href={`/portfolio/${item!.id}`} class="work-card">
-            <h3 class="h4">{item!.data.title}</h3>
-            <p>{item!.data.description}</p>
-            {item!.data.tags && (
+          <a href={`/portfolio/${item.id}`} class="work-card">
+            <h3 class="h4">{item.data.title}</h3>
+            <p>{item.data.description}</p>
+            {item.data.tags && (
               <div class="tags">
-                {item!.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
+                {item.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
               </div>
             )}
           </a>
