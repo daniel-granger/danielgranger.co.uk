@@ -6,12 +6,13 @@ import emptyStates from '../../data/empty-states.json';
 
 const items = await getCollection('portfolio');
 const filterTags = [...new Set(items.flatMap((item) => item.data.tags ?? []))].sort((a, b) => a.localeCompare(b));
+const projectLabel = items.length === 1 ? 'project' : 'projects';
 ---
 
 <Layout title="Portfolio - Daniel Granger" description="A selection of projects and work by Daniel Granger, .NET web developer.">
   <div class="page-header mt-5">
     <h1>Portfolio</h1>
-    <p class="page-subtitle">{items.length} project{items.length !== 1 ? 's' : ''}</p>
+    <p class="page-subtitle">{items.length} {projectLabel}</p>
   </div>
 
   {items.length > 0 && (

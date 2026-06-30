@@ -8,12 +8,13 @@ import emptyStates from '../../data/empty-states.json';
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const getPostCategories = (post: (typeof posts)[number]) => post.data.categories ?? post.data.tags ?? [];
 const filterCategories = [...new Set(posts.flatMap((post) => getPostCategories(post)))].sort((a, b) => a.localeCompare(b));
+const blogLabel = posts.length === 1 ? 'blog' : 'blogs';
 ---
 
 <Layout title="Blog - Daniel Granger" description="Articles and thoughts on .NET, web development, and software engineering by Daniel Granger.">
   <div class="page-header mt-5">
     <h1>Blog</h1>
-    <p class="page-subtitle">{posts.length} post{posts.length !== 1 ? 's' : ''}</p>
+    <p class="page-subtitle">{posts.length} {blogLabel}</p>
   </div>
 
   {posts.length > 0 && (

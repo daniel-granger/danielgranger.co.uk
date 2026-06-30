@@ -68,6 +68,14 @@ collections:
           - { label: Homepage Featured Work Empty Message, name: home_featured_work_empty, widget: string }
           - { label: Blog Index Empty Message, name: blog_index_empty, widget: string }
           - { label: Portfolio Index Empty Message, name: portfolio_index_empty, widget: string }
+      - name: llms
+        label: LLMs.txt
+        file: src/data/llms.json
+        fields:
+          - label: Content
+            name: body
+            widget: text
+            hint: "Full llms.txt content served at /llms.txt. Follow the llmstxt.org spec: start with '# Name', then '> tagline', then sections."
       - name: contact
         label: Contact
         file: src/data/contact.json
