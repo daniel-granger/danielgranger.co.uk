@@ -2,12 +2,20 @@
 import '../../assets/css/hero.css';
 import { marked } from 'marked';
 import homepage from '../../data/homepage.json';
+import { deviconSvgMap, type DevIconKey } from '../../data/devicons';
 
 const subtitleHtml = marked.parseInline(homepage.subtitle);
+const needsDeviconStyles = homepage.icons.some((icon) => !deviconSvgMap[icon as DevIconKey]);
 ---
 
-<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" /></noscript>
+{
+	needsDeviconStyles && (
+		<>
+			<link rel="preload" as="style" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+			<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" /></noscript>
+		</>
+	)
+}
 
 <section class="hero">
 	<div class="row">
@@ -16,16 +24,21 @@ const subtitleHtml = marked.parseInline(homepage.subtitle);
 			<p class="render-code hero-tag" set:html={subtitleHtml}></p>
 
 			<div class="dev-icon-container mt-3">
-				{homepage.icons.map((icon) => (
-					<i class={`devicon-${icon}-plain`} aria-hidden="true"></i>
-				))}
+				{homepage.icons.map((icon) => {
+					const svgMarkup = deviconSvgMap[icon as DevIconKey];
+					return svgMarkup ? (
+						<span class="dev-icon-svg" data-dev-icon aria-hidden="true" set:html={svgMarkup}></span>
+					) : (
+						<i class={`devicon-${icon}-plain`} data-dev-icon aria-hidden="true"></i>
+					);
+				})}
 			</div>
 		</div>
 	</div>
 </section>
 
 <script>
-	document.querySelectorAll('.dev-icon-container > i').forEach((icon) => {
+	document.querySelectorAll('.dev-icon-container > [data-dev-icon]').forEach((icon) => {
 		icon.addEventListener('mouseenter', () => icon.classList.add('colored'));
 		icon.addEventListener('mouseleave', () => icon.classList.remove('colored'));
 	});
