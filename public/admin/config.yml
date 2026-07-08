@@ -109,6 +109,11 @@ collections:
         widget: list
         required: false
         hint: "Maximum 3 categories"
+      - label: OG Image
+        name: image
+        widget: image
+        required: false
+        hint: "Optional cover image used when sharing this post on social media (1200×630px recommended). Leave blank to use the auto-generated card."
       - { label: Body, name: body, widget: richtext }
 
   - name: portfolio
@@ -127,4 +132,9 @@ collections:
         widget: list
         required: false
         hint: "Maximum 3 tags"
+      - label: OG Image
+        name: image
+        widget: image
+        required: false
+        hint: "Optional cover image used when sharing this item on social media (1200×630px recommended). Leave blank to use the auto-generated card."
       - { label: Body, name: body, widget: richtext }
