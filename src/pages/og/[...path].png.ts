@@ -61,62 +61,116 @@ function buildCard(title: string, subtitle: string) {
   const fontSize = title.length > 50 ? 46 : title.length > 30 ? 56 : 68;
 
   return {
+    // Outer: row — accent bar on the left, content on the right
     type: 'div',
     props: {
       style: {
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         width: '100%',
         height: '100%',
-        padding: '72px 80px',
-        backgroundColor: '#111111',
+        background: 'linear-gradient(135deg, #0d1117 0%, #1a1f2e 100%)',
         fontFamily: 'Inter',
       },
       children: [
-        // Domain — top-left
+        // Left accent bar
         {
           type: 'div',
           props: {
             style: {
               display: 'flex',
-              fontSize: 20,
-              color: '#555555',
-              letterSpacing: '0.05em',
-              marginBottom: 'auto',
+              width: 10,
+              background: 'linear-gradient(180deg, #3b82f6 0%, #6366f1 100%)',
             },
-            children: 'danielgranger.co.uk',
+            children: '',
           },
         },
-        // Title + subtitle — bottom
+        // Main content column
         {
           type: 'div',
           props: {
-            style: { display: 'flex', flexDirection: 'column' },
+            style: {
+              display: 'flex',
+              flexDirection: 'column',
+              flex: 1,
+              padding: '64px 72px',
+            },
             children: [
+              // Domain — top
               {
                 type: 'div',
                 props: {
                   style: {
                     display: 'flex',
-                    fontSize,
-                    fontWeight: 700,
-                    color: '#ffffff',
-                    lineHeight: 1.1,
-                    marginBottom: 24,
+                    fontSize: 20,
+                    color: '#4b5563',
+                    letterSpacing: '0.06em',
+                    marginBottom: 'auto',
                   },
-                  children: title,
+                  children: 'danielgranger.co.uk',
                 },
               },
+              // Title + subtitle — bottom
               {
                 type: 'div',
                 props: {
-                  style: {
-                    display: 'flex',
-                    fontSize: 28,
-                    fontWeight: 400,
-                    color: '#888888',
-                  },
-                  children: subtitle,
+                  style: { display: 'flex', flexDirection: 'column' },
+                  children: [
+                    {
+                      type: 'div',
+                      props: {
+                        style: {
+                          display: 'flex',
+                          fontSize,
+                          fontWeight: 700,
+                          color: '#f0f6fc',
+                          lineHeight: 1.1,
+                          marginBottom: 24,
+                        },
+                        children: title,
+                      },
+                    },
+                    // Subtitle with a small accent dot
+                    {
+                      type: 'div',
+                      props: {
+                        style: {
+                          display: 'flex',
+                          flexDirection: 'row',
+                          alignItems: 'center',
+                          gap: 14,
+                        },
+                        children: [
+                          {
+                            type: 'div',
+                            props: {
+                              style: {
+                                display: 'flex',
+                                width: 10,
+                                height: 10,
+                                borderRadius: 5,
+                                backgroundColor: '#3b82f6',
+                                flexShrink: 0,
+                              },
+                              children: '',
+                            },
+                          },
+                          {
+                            type: 'div',
+                            props: {
+                              style: {
+                                display: 'flex',
+                                fontSize: 26,
+                                fontWeight: 400,
+                                color: '#8b949e',
+                              },
+                              children: subtitle,
+                            },
+                          },
+                        ],
+                      },
+                    },
+                  ],
                 },
               },
             ],
