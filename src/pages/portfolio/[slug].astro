@@ -18,7 +18,10 @@ const { item } = Astro.props as Props;
 const { Content } = await render(item);
 ---
 
-<Layout title={`${item.data.title} - Daniel Granger`}>
+<Layout
+  title={`${item.data.title} - Daniel Granger`}
+  ogImage={item.data.image ? new URL(item.data.image, Astro.site).href : undefined}
+>
   <article>
     <h1>{item.data.title}</h1>
     {item.data.tags && <p>Tags: {item.data.tags.join(', ')}</p>}

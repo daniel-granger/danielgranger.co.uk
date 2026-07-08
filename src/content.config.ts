@@ -9,6 +9,8 @@ const blog = defineCollection({
     description: z.string(),
     categories: z.array(z.string()).max(3).optional(),
     tags: z.array(z.string()).max(3).optional(),
+    /** Path relative to /public/ (e.g. /uploads/my-post/cover.jpg) or an absolute URL */
+    image: z.string().optional(),
   }),
 });
 
@@ -20,6 +22,8 @@ const portfolio = defineCollection({
     description: z.string(),
     tags: z.array(z.string()).max(3).optional(),
     is_featured: z.boolean().default(false),
+    /** Path relative to /public/ (e.g. /uploads/my-item/cover.jpg) or an absolute URL */
+    image: z.string().optional(),
   }),
 });
 

@@ -33,8 +33,14 @@ function rehypeCodeBlockA11y() {
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://danielgranger.co.uk',
   build: {
     inlineStylesheets: 'always',
+  },
+  vite: {
+    ssr: {
+      external: ['@resvg/resvg-js'],
+    },
   },
   redirects: {
     '/admin': '/admin/index.html',
