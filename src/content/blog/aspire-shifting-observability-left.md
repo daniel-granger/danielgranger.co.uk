@@ -2,7 +2,9 @@
 title: "Aspire: Shifting Observability Left"
 date: 2026-09-16
 draft: false
-description: Desc
+description: Stop blind debugging. Discover how fitting Aspire into existing
+  solutions brings instant OpenTelemetry traces and observability into your
+  local development loop.
 categories:
   - telemetry
 ---
