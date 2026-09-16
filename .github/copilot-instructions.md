@@ -32,6 +32,7 @@ There are no test or lint scripts in `package.json`, so there is currently no co
 
 - Keep page-specific text in the relevant JSON data file instead of hard-coding it in the Astro component. Keep empty-state messages in `src/data/empty-states.json`.
 - Use absolute `/...` URLs for assets in `public/`. Content `image` fields may be a `/public` path or an absolute URL; `Layout.astro` resolves them into OG metadata.
+- Markdown images uploaded through Decap CMS under `/images/` are rewritten at build time to Netlify Image CDN URLs capped at 1200px wide with automatic format negotiation.
 - Blog and portfolio indexes use `TaxonomyFilter.astro`: each item must expose comma-separated values through `data-filter-values`, and the filter’s `itemSelector` must match the rendered item class.
 - Preserve the existing date behavior: blog lists sort newest first, dates are displayed with `en-GB` formatting, and portfolio featured items sort newest first while undated items sort last.
 - Use typed frontmatter and props in `.astro` files. The repository extends Astro’s strict TypeScript configuration; do not edit generated `.astro/types.d.ts`.

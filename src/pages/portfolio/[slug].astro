@@ -23,9 +23,11 @@ const { Content } = await render(item);
   description={item.data.description}
   ogImageAlt={`${item.data.title} project image`}
 >
-  <article>
+  <article class="content-article">
     <h1>{item.data.title}</h1>
     {item.data.tags && <p>Tags: {item.data.tags.join(', ')}</p>}
-    <Content />
+    <div class="article-content">
+      <Content />
+    </div>
   </article>
 </Layout>

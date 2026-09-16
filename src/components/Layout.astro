@@ -1,5 +1,6 @@
 ---
 import '../assets/css/global.css';
+import footer from '../data/footer.json';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 
@@ -29,6 +30,12 @@ const {
 } = Astro.props;
 
 const canonicalUrl = Astro.url.href;
+const siteUrl = Astro.site ?? new URL(Astro.url.origin);
+const siteUrlString = siteUrl.href.replace(/\/$/, '');
+const logoUrl = new URL('/android-chrome-512x512.png', siteUrl).href;
+const socialProfiles = (footer.social_links ?? [])
+  .map((link) => link.url)
+  .filter((url) => /^https?:\/\//.test(url));
 
 // Derive the auto-generated OG image URL from the current page's pathname
 const rawPath = Astro.url.pathname.replace(/\/$/, '') || '/';
@@ -46,6 +53,40 @@ const resolvedOgImageType =
       : 'image/png');
 const resolvedOgImageWidth = ogImageWidth ?? (ogImage ? undefined : 1200);
 const resolvedOgImageHeight = ogImageHeight ?? (ogImage ? undefined : 630);
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrlString}#website`,
+      url: siteUrlString,
+      name: 'Daniel Granger',
+      description,
+      publisher: { '@id': `${siteUrlString}#organization` },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrlString}#organization`,
+      name: 'Daniel Granger',
+      url: siteUrlString,
+      logo: {
+        '@type': 'ImageObject',
+        url: logoUrl,
+        width: 512,
+        height: 512,
+      },
+      sameAs: socialProfiles,
+    },
+    {
+      '@type': 'Person',
+      '@id': `${siteUrlString}#person`,
+      name: 'Daniel Granger',
+      url: siteUrlString,
+      image: logoUrl,
+      sameAs: socialProfiles,
+    },
+  ],
+}).replace(/</g, '\\u003c');
 ---
 
 <html lang="en">
@@ -59,6 +100,7 @@ const resolvedOgImageHeight = ogImageHeight ?? (ogImage ? undefined : 630);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    <script type="application/ld+json" set:html={jsonLd}></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

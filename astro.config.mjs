@@ -23,6 +23,33 @@ function rehypeCodeBlockA11y() {
   };
 }
 
+/** Rehype plugin: serve Decap CMS images through Netlify Image CDN. */
+function rehypeNetlifyImageCdn() {
+  return function (/** @type {RehypeNode} */ tree) {
+    function walk(/** @type {RehypeNode} */ node) {
+      if (node.type === 'element' && node.tagName === 'img' && node.properties) {
+        const source = node.properties.src;
+
+        if (typeof source === 'string' && source.startsWith('/images/')) {
+          const params = new URLSearchParams({
+            url: source,
+            w: '1200',
+            q: '75',
+          });
+
+          node.properties.src = `/.netlify/images?${params.toString()}`;
+          node.properties.loading = 'lazy';
+          node.properties.decoding = 'async';
+        }
+      }
+
+      node.children?.forEach(walk);
+    }
+
+    walk(tree);
+  };
+}
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://danielgranger.co.uk',
@@ -48,6 +75,6 @@ export default defineConfig({
         },
       ],
     },
-    rehypePlugins: [rehypeCodeBlockA11y],
+    rehypePlugins: [rehypeCodeBlockA11y, rehypeNetlifyImageCdn],
   },
 });
