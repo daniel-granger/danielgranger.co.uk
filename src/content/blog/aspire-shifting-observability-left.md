@@ -6,7 +6,7 @@ description: Desc
 categories:
   - telemetry
 ---
-You pick up a story, write the code, write the unit tests and watch the suite go green. Edge cases pass, the PR merges, and you move on to the next thing.
+You pick up a story, write the code, write the unit tests and watch the suite go green. Edge cases pass, the PR merges, and you move on to the next task.
 
 Three days later, your alerts start firing. The application hasn’t crashed, but your logs are bleeding noise: a cascade of `NullReferenceException` entries in Elastic and Application Insights every time an external call returns empty.
 
@@ -20,4 +20,4 @@ Enter [Aspire](https://aspire.dev).
 
 ![Browser screenshot of the aspire.dev homepage, it's title: "Compose distributed apps in code." ](/images/aspire_homepage.png "Aspire Homepage")
 
-Most documentation and blogs write about Aspire as the perfect orchestration framework
+Most documentation or blogs write about Aspire as the perfect framework for new projects, the way for every developer to *Aspire* to orchestrate their application; however, it's been incredibly powerful to hook into existing website solutions to gain a deeper understanding in bottlenecks
