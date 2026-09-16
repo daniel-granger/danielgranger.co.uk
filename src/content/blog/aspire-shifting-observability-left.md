@@ -18,6 +18,6 @@ When working day-to-day across multi-layered solutions - perhaps a .NET website 
 
 Enter [Aspire](https://aspire.dev).
 
-![Browser screenshot of the aspire.dev homepage, it's title: "Compose distributed apps in code." ](/images/aspire_homepage.png "Aspire Homepage")
+![Browser screenshot of the aspire.dev homepage, it's title: "Compose distributed apps in code." ](/images/aspire_dashboard.png "Aspire Homepage")
 
 Most documentation or blogs write about Aspire as the perfect framework for new projects, the way for every developer to *Aspire* to orchestrate their application; however, it's been incredibly powerful to hook into existing website solutions to gain a deeper understanding in bottlenecks
