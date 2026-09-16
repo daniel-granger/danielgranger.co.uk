@@ -40,7 +40,7 @@ There it is: a 10-second wait for the CRM. Rather than waiting around on the ven
 
 One misconception holding developers back from adopting Aspire is the fear that a full architectural overhaul is required. However, it actually comes down to two lightweight scaffolding projects: an orchestrator (`AppHost`) and a shared telemetry package (`ServiceDefaults`) - then registering a couple of extension methods in your startup pipeline. In most cases, you can be up and running in under 10 minutes fully instrumented for OpenTelemetry:
 
-```
+```csharp
 var builder = DistributedApplication.CreateBuilder(args);
 
 var redis = builder.AddRedis("redis")
@@ -72,7 +72,7 @@ builder.Build().Run();
 
 And then in an existing project's `Program.cs`, you would add:
 
-```
+```csharp
 // Register OpenTelemetry, logging, and default resilience handlers
 builder.AddServiceDefaults();
 
