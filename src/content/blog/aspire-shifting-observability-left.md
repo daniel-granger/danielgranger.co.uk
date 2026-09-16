@@ -22,6 +22,6 @@ Enter [Aspire](https://aspire.dev).
 
 Most documentation or blogs write about Aspire as the perfect framework for new projects, the way for every developer to *aspire* to orchestrate their application; however, it's been incredibly powerful to hook into existing website solutions to gain a deeper understanding into why an endpoint stutters, why a CMS lookup stalls, or which database call is silently running multiple times per page request after a cache miss.
 
-### An example
+##### Lets take a look at an example.
 
 You have a registration form: it accepts user details, stores that in Azure Blob Storage, and makes a request to an external CRM system to create the new contact in the system. QA flag that the form takes 10 seconds to submit - strange. Through [OpenTelemetry](https://opentelemetry.io/docs/what-is-opentelemetry/), Aspire
