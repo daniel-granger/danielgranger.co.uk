@@ -2,31 +2,23 @@
 import { defineConfig } from 'astro/config';
 
 /** Rehype plugin: removes tabindex from <pre> code blocks to fix a11y */
+/** Minimal tree shape needed by the rehype accessibility transform. */
+/**
+ * @typedef {{ type?: string, tagName?: string, properties?: Record<string, unknown>, children?: RehypeNode[] }} RehypeNode
+ */
 function rehypeCodeBlockA11y() {
-  return function (tree) {
-    function walk(node) {
-      if (node.type === 'element' && node.tagName === 'pre') {
+  return function (/** @type {RehypeNode} */ tree) {
+    function walk(/** @type {RehypeNode} */ node) {
+      if (node.type === 'element' && node.tagName === 'pre' && node.properties) {
         for (const key of Object.keys(node.properties)) {
-          if (key.toLowerCase() === 'tabindex') delete node.properties[key];
+          if (key.toLowerCase() === 'tabindex') {
+            delete node.properties[key];
+          }
         }
       }
-      if (node.children) node.children.forEach(walk);
+      node.children?.forEach(walk);
     }
-    walk(tree);
-  };
-}
 
-/** Rehype plugin: removes tabindex from <pre> code blocks to fix a11y */
-function rehypeCodeBlockA11y() {
-  return function (tree) {
-    function walk(node) {
-      if (node.type === 'element' && node.tagName === 'pre') {
-        for (const key of Object.keys(node.properties)) {
-          if (key.toLowerCase() === 'tabindex') delete node.properties[key];
-        }
-      }
-      if (node.children) node.children.forEach(walk);
-    }
     walk(tree);
   };
 }

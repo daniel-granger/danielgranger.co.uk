@@ -9,9 +9,24 @@ interface Props {
   ogType?: 'website' | 'article';
   /** Absolute URL of a custom OG image. Defaults to the auto-generated card for this page. */
   ogImage?: string;
+  ogImageAlt?: string;
+  ogImageType?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  noIndex?: boolean;
 }
 
-const { title, description, ogType = 'website', ogImage } = Astro.props;
+const {
+  title,
+  description,
+  ogType = 'website',
+  ogImage,
+  ogImageAlt,
+  ogImageType,
+  ogImageWidth,
+  ogImageHeight,
+  noIndex = false,
+} = Astro.props;
 
 const canonicalUrl = Astro.url.href;
 
@@ -20,6 +35,17 @@ const rawPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const ogSlug = rawPath === '/' ? 'index' : rawPath.slice(1);
 const defaultOgImage = Astro.site ? new URL(`og/${ogSlug}.png`, Astro.site).href : undefined;
 const resolvedOgImage = ogImage ?? defaultOgImage;
+const resolvedOgImageAlt = ogImageAlt ?? description ?? title;
+const imageExtension = ogImage?.toLowerCase().match(/\.(avif|gif|jpe?g|png|webp)(?:[?#]|$)/)?.[1];
+const resolvedOgImageType =
+  ogImageType ??
+  (imageExtension
+    ? `image/${imageExtension === 'jpg' ? 'jpeg' : imageExtension}`
+    : ogImage
+      ? undefined
+      : 'image/png');
+const resolvedOgImageWidth = ogImageWidth ?? (ogImage ? undefined : 1200);
+const resolvedOgImageHeight = ogImageHeight ?? (ogImage ? undefined : 630);
 ---
 
 <html lang="en">
@@ -32,6 +58,7 @@ const resolvedOgImage = ogImage ?? defaultOgImage;
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -48,17 +75,32 @@ const resolvedOgImage = ogImage ?? defaultOgImage;
     {resolvedOgImage && (
       <>
         <meta property="og:image" content={resolvedOgImage} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:type" content="image/png" />
+        {resolvedOgImageWidth && <meta property="og:image:width" content={String(resolvedOgImageWidth)} />}
+        {resolvedOgImageHeight && <meta property="og:image:height" content={String(resolvedOgImageHeight)} />}
+        {resolvedOgImageType && <meta property="og:image:type" content={resolvedOgImageType} />}
+        <meta property="og:image:alt" content={resolvedOgImageAlt} />
+      </>
+    )}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    {resolvedOgImage && (
+      <>
+        <meta name="twitter:image" content={resolvedOgImage} />
+        <meta name="twitter:image:alt" content={resolvedOgImageAlt} />
       </>
     )}
     <title>{title}</title>
     <!-- Privacy-friendly analytics by Plausible -->
     <script async src="https://plausible.io/js/pa-j5oLSmmwJ-mLW43IfYzi6.js"></script>
-    <script>
-      window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-      plausible.init()
+    <script is:inline>
+      window.plausible = window.plausible || function (...args) {
+        (window.plausible.q = window.plausible.q || []).push(args);
+      };
+      window.plausible.init = window.plausible.init || function (options) {
+        window.plausible.o = options || {};
+      };
+      window.plausible.init();
     </script>
   </head>
   <body>

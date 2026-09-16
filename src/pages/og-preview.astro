@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../components/Layout.astro';
+
+const [blogPosts, portfolioItems] = await Promise.all([
+  getCollection('blog'),
+  getCollection('portfolio'),
+]);
+
+const previews = [
+  { label: 'Homepage', path: 'index' },
+  { label: 'Blog index', path: 'blog' },
+  { label: 'Portfolio index', path: 'portfolio' },
+  { label: 'Contact', path: 'contact' },
+  ...blogPosts
+    .filter((post) => !post.data.draft)
+    .slice(0, 3)
+    .map((post) => ({ label: `Blog: ${post.data.title}`, path: `blog/${post.id}` })),
+  ...portfolioItems
+    .filter((item) => !item.data.draft)
+    .slice(0, 3)
+    .map((item) => ({ label: `Portfolio: ${item.data.title}`, path: `portfolio/${item.id}` })),
+];
+---
+
+<Layout
+  title="Open Graph Preview - Daniel Granger"
+  description="Preview the generated social sharing images for danielgranger.co.uk."
+  ogImage="/og/index.png"
+  ogImageAlt="Daniel Granger Open Graph image preview"
+  ogImageWidth={1200}
+  ogImageHeight={630}
+  noIndex
+>
+  <div class="page-header mt-5">
+    <h1>Open Graph Preview</h1>
+    <p class="page-subtitle">Generated cards for the site and published content.</p>
+  </div>
+
+  <section class="row g-4 mt-3">
+    {previews.map((preview) => (
+      <figure class="col-12 col-lg-6">
+        <figcaption class="mb-2">{preview.label}</figcaption>
+        <a href={`/og/${preview.path}.png`} target="_blank" rel="noreferrer">
+          <img
+            src={`/og/${preview.path}.png`}
+            alt={`${preview.label} Open Graph card`}
+            class="img-fluid rounded border"
+          />
+        </a>
+      </figure>
+    ))}
+  </section>
+</Layout>

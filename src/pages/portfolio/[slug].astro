@@ -20,7 +20,8 @@ const { Content } = await render(item);
 
 <Layout
   title={`${item.data.title} - Daniel Granger`}
-  ogImage={item.data.image ? new URL(item.data.image, Astro.site).href : undefined}
+  description={item.data.description}
+  ogImageAlt={`${item.data.title} project image`}
 >
   <article>
     <h1>{item.data.title}</h1>

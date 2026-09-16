@@ -21,7 +21,7 @@ const { Content } = await render(post);
   title={`${post.data.title} - Daniel Granger`}
   description={post.data.description}
   ogType="article"
-  ogImage={post.data.image ? new URL(post.data.image, Astro.site).href : undefined}
+  ogImageAlt={`${post.data.title} cover image`}
 >
   <article>
     <h1>{post.data.title}</h1>

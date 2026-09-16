@@ -21,6 +21,9 @@
     "satori": "^0.26.0"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^8.0.0"
+    "@astrojs/check": "^0.9.10",
+    "@fullhuman/postcss-purgecss": "^8.0.0",
+    "@types/node": "^22.20.3",
+    "typescript": "^6.0.3"
   }
 }

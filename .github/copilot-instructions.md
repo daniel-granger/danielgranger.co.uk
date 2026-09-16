@@ -25,7 +25,7 @@ There are no test or lint scripts in `package.json`, so there is currently no co
 - `src/pages/blog/index.astro` and `src/pages/portfolio/index.astro` query collections for listing pages. The matching `[slug].astro` routes use `getStaticPaths()` and `render()` for individual Markdown pages.
 - The home page is composed from `src/components/Home/`. `LatestPosts.astro` shows the three newest blog posts; `FeaturedWork.astro` selects featured portfolio items and sorts them by date; `About.astro` renders Markdown stored in the homepage data.
 - Editable site copy is kept in `src/data/*.json` and consumed directly by components. The Netlify CMS configuration in `public/admin/config.yml` maps these files and the two content collections to the `/admin` interface.
-- Build-time endpoints generate `sitemap.xml`, `llms.txt`, and PNG Open Graph cards. The OG route uses Satori and Resvg and fetches Inter fonts during the build; `astro.config.mjs` supplies the canonical site URL and Markdown code-block transforms.
+- Build-time endpoints generate `sitemap.xml`, `llms.txt`, and PNG Open Graph cards. The OG route uses the typed card helpers in `src/lib/og.ts`, Satori, Resvg, and local Inter fonts in `public/fonts/`; `/og-preview` provides a no-index gallery of generated cards. `astro.config.mjs` supplies the canonical site URL and Markdown code-block transforms.
 - The contact page is a Netlify form (`data-netlify="true"`) that posts to `/contact/thanks/`; preserve the hidden `form-name` field and honeypot when changing the form.
 
 ## Repository conventions
