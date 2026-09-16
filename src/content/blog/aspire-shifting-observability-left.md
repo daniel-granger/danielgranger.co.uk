@@ -6,7 +6,9 @@ description: Stop blind debugging. Discover how fitting Aspire into existing
   solutions brings instant OpenTelemetry traces and observability into your
   local development loop.
 categories:
-  - telemetry
+  - aspire
+  - c#
+  - opentelemetry
 ---
 You pick up a story, write the code, write the unit tests and watch the suite go green. Edge cases pass, the PR merges, and you move on to the next task.
 
