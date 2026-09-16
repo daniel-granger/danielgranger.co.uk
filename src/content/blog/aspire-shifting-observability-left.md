@@ -6,12 +6,8 @@ description: Desc
 categories:
   - telemetry
 ---
-You pick up a story; implement the code; ensure it’s covered with tests and check it runs.
+You pick up a story, write the code, write the unit tests and watch the suite go green. Edge cases pass, the PR merges, and you move on to the next thing.
 
-Great, it works. You perform some edge-case tests, raise a PR, merge and forget.
+Three days later, your alerts start firing. The application hasn’t crashed, but your logs are bleeding noise: a cascade of `NullReferenceException` entries in Elastic or Azure Application Insights every time an external call returns empty. Your clean local data you developed against 
 
-You don't realise it, but you just created yourself, and other developers a headache down the line. Your new endpoint is throwing errors into your logs, causing a considerable amount of noise and setting off alerts - even if it doesn't cause the application to restart.
-
-Naturally, you might turn to something like Azure's Application Insights, following the traces from your calls to see where the problem lies, or filtering through your logs in Elastic to pinpoint the exact error being thrown: a `NullReferenceException` every time your query returns no data.
-
-Especially in the age of agentic coding, it's all too easy for developers
+In an era where developers are able to utilise agentic coding to churn out working code in seconds, we've largely solved the syntax problem only to worsen the operational one. Both AI and good developers can write code that *functions*, but rarely code that *observes*.
