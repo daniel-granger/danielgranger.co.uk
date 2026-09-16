@@ -1,5 +1,5 @@
 ---
-title: "Aspire: Shifting Observability Left ⬅️"
+title: "Aspire: Shifting Observability Left"
 date: 2026-09-16
 draft: false
 description: Desc
@@ -22,6 +22,12 @@ Enter [Aspire](https://aspire.dev).
 
 Most documentation or blogs write about Aspire as the perfect framework for new projects, the way for every developer to *aspire* to orchestrate their application; however, it's been incredibly powerful to hook into existing website solutions to gain a deeper understanding into why an endpoint stutters, why a CMS lookup stalls, or which database call is silently running multiple times per page request after a cache miss.
 
+It's amazingly easy to setup, as well. I often find myself using the [Aspireify](https://aspire.dev/get-started/add-aspire-existing-app/#recommended-use-an-ai-coding-agent-with-the-aspireify-skill) skill to allow my agent to tie the application together, all with first class OpenTelemetry support.
+
 ##### Lets take a look at an example.
 
-You have a registration form: it accepts user details, stores that in Azure Blob Storage, and makes a request to an external CRM system to create the new contact in the system. QA flag that the form takes 10 seconds to submit - strange. Through [OpenTelemetry](https://opentelemetry.io/docs/what-is-opentelemetry/), Aspire
+You have a registration form: it accepts user details, stores them in Azure Blob Storage, and makes a request to an external CRM system to create the new contact in the system. QA flag that the form takes 10 seconds to submit - *strange*.
+
+Traditionally, you may have thought to start the application locally, set a breakpoint, and step through your code line-by-line, waiting for an exception to throw or some asynchronous call to hang. You have no timings, of course, so might drop in a temporary stopwatch around code you suspect might be the problem. Of course, you often step back in code to rerun a call, as you weren't sure if your IDE caused a slowdown, or if there was a legitimate problem.
+
+With Aspire? You just run it. Through OpenTelemetry metrics collated into the dashboard, you can gain an immediate insight into the problematic code:
