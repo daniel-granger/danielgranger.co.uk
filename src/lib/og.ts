@@ -75,10 +75,11 @@ export function buildOgCard(data: OgCardData, imageDataUri?: string): OgElement 
     {
       display: 'flex',
       flexDirection: 'column',
-      width: 736,
+      position: 'relative',
+      width: 1186,
       height: '100%',
       boxSizing: 'border-box',
-      padding: '58px 56px 48px 68px',
+      padding: '58px 86px 48px 96px',
       color: '#f0f6fc',
     },
     [
@@ -191,93 +192,30 @@ export function buildOgCard(data: OgCardData, imageDataUri?: string): OgElement 
     ],
   );
 
-  const visual = imageDataUri
-    ? div(
-        {
-          position: 'relative',
-          display: 'flex',
-          width: 450,
+  const background = imageDataUri
+    ? [
+        image(imageDataUri, {
+          position: 'absolute',
+          width: '100%',
           height: '100%',
-          boxSizing: 'border-box',
-          overflow: 'hidden',
-          backgroundColor: '#1f6b43',
-        },
-        [
-          image(imageDataUri, {
+          objectFit: 'cover',
+        }),
+        div(
+          {
             position: 'absolute',
+            display: 'flex',
             width: '100%',
             height: '100%',
-            objectFit: 'cover',
-          }),
-          div(
-            {
-              position: 'absolute',
-              display: 'flex',
-              width: '100%',
-              height: '100%',
-              background: 'linear-gradient(90deg, rgba(13, 17, 23, 0.9) 0%, rgba(13, 17, 23, 0.15) 70%)',
-            },
-            '',
-          ),
-          div(
-            {
-              position: 'absolute',
-              display: 'flex',
-              right: 28,
-              bottom: 26,
-              color: '#ffffff',
-              fontSize: 16,
-              backgroundColor: 'rgba(13, 17, 23, 0.7)',
-              padding: '8px 12px',
-              borderRadius: 9999,
-            },
-            truncate(data.imageAlt ?? 'Daniel Granger', 42),
-          ),
-        ],
-      )
-    : div(
-        {
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: 450,
-          height: '100%',
-          boxSizing: 'border-box',
-          background: 'linear-gradient(145deg, #1f6b43 0%, #123526 100%)',
-        },
-        [
-          div(
-            {
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: 190,
-              height: 190,
-              borderRadius: 42,
-              backgroundColor: '#6cd899',
-              color: '#f0fff7',
-              fontSize: 74,
-              fontWeight: 700,
-              letterSpacing: '-0.08em',
-            },
-            'DG',
-          ),
-          div(
-            {
-              display: 'flex',
-              marginTop: 28,
-              color: '#c8f8dc',
-              fontSize: 22,
-              letterSpacing: '0.08em',
-            },
-            'BUILD. LEARN. SHARE.',
-          ),
-        ],
-      );
+            background: 'linear-gradient(90deg, rgba(13, 17, 23, 0.98) 0%, rgba(13, 17, 23, 0.84) 62%, rgba(13, 17, 23, 0.58) 100%)',
+          },
+          '',
+        ),
+      ]
+    : [];
 
   return div(
     {
+      position: 'relative',
       display: 'flex',
       flexDirection: 'row',
       width: OG_WIDTH,
@@ -288,6 +226,7 @@ export function buildOgCard(data: OgCardData, imageDataUri?: string): OgElement 
       overflow: 'hidden',
     },
     [
+      ...background,
       div({
         display: 'flex',
         width: 14,
@@ -295,7 +234,6 @@ export function buildOgCard(data: OgCardData, imageDataUri?: string): OgElement 
         background: 'linear-gradient(180deg, #6cd899 0%, #1f6b43 100%)',
       }, ''),
       content,
-      visual,
     ],
   );
 }
