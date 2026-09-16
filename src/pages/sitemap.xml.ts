@@ -22,8 +22,8 @@ const escapeXml = (value: string) =>
 const formatDate = (date: Date) => date.toISOString().split('T')[0];
 
 export const GET: APIRoute = async ({ site }) => {
-  const blogPosts = await getCollection('blog');
-  const portfolioItems = await getCollection('portfolio');
+  const blogPosts = (await getCollection('blog')).filter((post) => !post.data.draft);
+  const portfolioItems = (await getCollection('portfolio')).filter((item) => !item.data.draft);
   const siteUrl = site ?? new URL(DEFAULT_SITE_URL);
   const buildDate = new Date();
   const newestBlogDate = newestDate(blogPosts.map((post) => post.data.date));

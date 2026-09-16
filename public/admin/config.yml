@@ -103,6 +103,7 @@ collections:
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false }
       - { label: Description, name: description, widget: string }
       - label: Categories
         name: categories
@@ -125,6 +126,7 @@ collections:
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false, required: false }
+      - { label: Draft, name: draft, widget: boolean, required: false, default: false }
       - { label: Description, name: description, widget: string }
       - { label: Is Featured, name: is_featured, widget: boolean, required: false, default: false }
       - label: Tags

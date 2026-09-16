@@ -35,10 +35,12 @@ interface OgProps {
 }
 
 export async function getStaticPaths() {
-  const [blogPosts, portfolioItems] = await Promise.all([
+  const [allBlogPosts, allPortfolioItems] = await Promise.all([
     getCollection('blog'),
     getCollection('portfolio'),
   ]);
+  const blogPosts = allBlogPosts.filter((post) => !post.data.draft);
+  const portfolioItems = allPortfolioItems.filter((item) => !item.data.draft);
 
   return [
     { params: { path: 'index' },           props: { title: 'Daniel Granger',  subtitle: '.NET Web Developer' } },

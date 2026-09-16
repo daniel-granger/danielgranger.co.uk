@@ -4,6 +4,7 @@ import Icon from '../Icon.astro';
 import emptyStates from '../../data/empty-states.json';
 
 const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 ---

@@ -4,7 +4,7 @@ import Layout from '../../components/Layout.astro';
 import TaxonomyFilter from '../../components/TaxonomyFilter.astro';
 import emptyStates from '../../data/empty-states.json';
 
-const items = await getCollection('portfolio');
+const items = (await getCollection('portfolio')).filter((item) => !item.data.draft);
 const filterTags = [...new Set(items.flatMap((item) => item.data.tags ?? []))].sort((a, b) => a.localeCompare(b));
 const projectLabel = items.length === 1 ? 'project' : 'projects';
 ---

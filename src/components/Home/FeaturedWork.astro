@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import emptyStates from '../../data/empty-states.json';
 
 const featured = (await getCollection('portfolio'))
-  .filter((item) => item.data.is_featured)
+  .filter((item) => !item.data.draft && item.data.is_featured)
   .sort((a, b) => {
     const aDate = a.data.date ? a.data.date.valueOf() : 0;
     const bDate = b.data.date ? b.data.date.valueOf() : 0;

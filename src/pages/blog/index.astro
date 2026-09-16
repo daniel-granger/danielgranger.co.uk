@@ -5,7 +5,9 @@ import TaxonomyFilter from '../../components/TaxonomyFilter.astro';
 import Icon from '../../components/Icon.astro';
 import emptyStates from '../../data/empty-states.json';
 
-const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const getPostCategories = (post: (typeof posts)[number]) => post.data.categories ?? post.data.tags ?? [];
 const filterCategories = [...new Set(posts.flatMap((post) => getPostCategories(post)))].sort((a, b) => a.localeCompare(b));
 const blogLabel = posts.length === 1 ? 'blog' : 'blogs';
