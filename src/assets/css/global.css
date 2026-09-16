@@ -97,11 +97,11 @@ article {
     margin-right: auto;
 }
 
-article > code {
+.article-content > code {
     font-family: Google Sans Mono, monospace;
 }
 
-article > blockquote {
+.article-content > blockquote {
     border-left: 0.25rem solid #444;
     border-radius: 0.25rem;
     padding-left: 1rem;
@@ -110,7 +110,7 @@ article > blockquote {
     transition: border-color 0.2s ease-in-out;
 }
 
-article > blockquote:hover {
+.article-content > blockquote:hover {
     border-left: 0.25rem solid #6CD899;
 }
 
@@ -125,17 +125,17 @@ article a:hover {
 
 
 
-article > pre {
+.article-content > pre {
     padding: 0.5rem 0;
     border-radius: 0.25rem;
     counter-reset: line;
 }
 
-article > pre code .line {
+.article-content > pre code .line {
     counter-increment: line;
 }
 
-article > pre code .line::before {
+.article-content > pre code .line::before {
     content: counter(line);
     display: inline-block;
     width: 1.5rem;
